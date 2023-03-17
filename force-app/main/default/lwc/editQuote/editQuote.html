@@ -1,9 +1,46 @@
 <!-- Edit Quote -->
 <template>
-  <h3 class="slds-page-header__title">Welcome to quote {quoteData.name}!</h3>
-  Quote Project Ends On:
-  <lightning-formatted-date-time
-    value={quoteData.endDate}
-    time-zone="UTC"
-  ></lightning-formatted-date-time>
+  <h3 class="slds-page-header__title">Welcome to quote {name}!</h3>
+  
+  <template if:true={record.data}>
+    <lightning-record-edit-form
+            record-id={recordId}
+            object-api-name="Quote__c"
+            density="comfy"
+            onsubmit={handleSubmit}
+            onsuccess={handleSuccess}>
+        
+        <lightning-messages></lightning-messages>
+
+        <lightning-layout multiple-rows>
+          <lightning-layout-item  size="2">
+            <lightning-input-field field-name={startField} disabled={readOnly} required></lightning-input-field>
+          </lightning-layout-item>
+          
+          <lightning-layout-item  size="10"></lightning-layout-item>
+          
+          <lightning-layout-item size="2">
+            <lightning-input-field field-name={endField} disabled={readOnly} required></lightning-input-field>
+          </lightning-layout-item>
+        </lightning-layout>
+
+        <div class="slds-var-m-top_large" style="display:flex; margin-left:60px; width: 100%">
+          <template if:false={readOnly}>
+              <lightning-button
+                      class="slds-var-m-top_small slds-var-m-right_medium"
+                      variant="brand-outline"
+                      type="button"
+                      label="Cancel" onclick={cancel}>
+              </lightning-button>
+              <lightning-button
+                      class="slds-var-m-top_small"
+                      variant="brand"
+                      type="submit"
+                      name="update"
+                      label="Save">
+              </lightning-button>
+          </template>
+        </div>
+    </lightning-record-edit-form>
+  </template>
 </template>

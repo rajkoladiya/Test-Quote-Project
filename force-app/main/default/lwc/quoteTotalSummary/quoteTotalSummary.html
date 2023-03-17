@@ -2,11 +2,9 @@
 <template>
   <div class="slds-m-around_medium">
     <h3 class="slds-page-header__title">Quote Adjusted Amount</h3>
-    <span>&nbsp;</span>
-    <lightning-button
-      variant="brand"
-      type="button"
-      label="Adjust quote"
-    ></lightning-button>
+    
+    <div class="slds-m-top_medium">
+      <lightning-button variant="brand" type="button" label="Adjust quote" onclick={handleClick} ></lightning-button>
+    </div>
   </div>
 </template>

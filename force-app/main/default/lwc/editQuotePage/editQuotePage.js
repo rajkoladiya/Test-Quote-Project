@@ -7,4 +7,7 @@ import { LightningElement, api } from "lwc";
 
 export default class EditQuotePage extends LightningElement {
   @api recordId;
+  handleAdjust(){
+    this.template.querySelector('c-edit-quote').editDetails();
+  }
 }
